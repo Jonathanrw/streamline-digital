@@ -178,7 +178,7 @@ function App() {
               ))}
             </ul>
             <div className="pt-4">
-              <a href="https://buy.stripe.com/6oE9Cj8hw9hk5ZSfZ5AQ02" className="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-blue-500 transition shadow-xl shadow-blue-600/20">
+              <a href="https://buy.stripe.com/dRm7sNfBMbGW6br2Sf5AQ03" className="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-blue-500 transition shadow-xl shadow-blue-600/20">
                 Get Content Engine Pro – $29
               </a>
             </div>
