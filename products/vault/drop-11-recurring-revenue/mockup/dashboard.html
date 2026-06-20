@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop #11: Recurring Revenue Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f3f4f6; font-family: 'Inter', sans-serif; }
+        .notion-card { background: white; border: 1px solid #e5e7eb; border-radius: 8px; transition: transform 0.2s; }
+        .notion-card:hover { transform: translateY(-2px); }
+        .status-pill { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .status-active { background: #d1fae5; color: #065f46; }
+        .status-at-risk { background: #fee2e2; color: #991b1b; }
+        .status-churned { background: #f3f4f6; color: #374151; }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <header class="mb-10 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">Recurring Revenue Blueprint</h1>
+                <p class="text-gray-600">Client Health & Retention Command Center</p>
+            </div>
+            <div class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-bold flex items-center">
+                <i class="fas fa-plus mr-2"></i>New Retainer Client
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                <div class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Current MRR</div>
+                <div class="text-2xl font-black text-gray-900">$8,450</div>
+                <div class="mt-2 text-xs text-green-600 font-bold"><i class="fas fa-arrow-up mr-1"></i>12% vs last month</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                <div class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Active Retainers</div>
+                <div class="text-2xl font-black text-gray-900">14</div>
+                <div class="mt-2 text-xs text-gray-400 font-bold">Average $603/client</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                <div class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">Churn Rate</div>
+                <div class="text-2xl font-black text-red-600">4.2%</div>
+                <div class="mt-2 text-xs text-red-400 font-bold">1 client left this quarter</div>
+            </div>
+            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                <div class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">LTV (Avg)</div>
+                <div class="text-2xl font-black text-indigo-600">$7,240</div>
+                <div class="mt-2 text-xs text-indigo-400 font-bold">Up 8% since strategy drop</div>
+            </div>
+        </div>
+
+        <!-- Main Databases -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Active Clients -->
+            <div class="lg:col-span-2">
+                <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-users mr-2 text-indigo-500"></i>Active Retainer Clients
+                </h2>
+                <div class="notion-card overflow-hidden">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-gray-50 text-gray-500 uppercase font-bold text-[10px]">
+                            <tr>
+                                <th class="px-6 py-3">Client</th>
+                                <th class="px-6 py-3">Tier</th>
+                                <th class="px-6 py-3">MRR</th>
+                                <th class="px-6 py-3">Status</th>
+                                <th class="px-6 py-3">Health</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr>
+                                <td class="px-6 py-4 font-semibold">Acme Growth Ltd.</td>
+                                <td class="px-6 py-4">Premium</td>
+                                <td class="px-6 py-4 font-mono">$1,200</td>
+                                <td class="px-6 py-4"><span class="status-pill status-active">Active</span></td>
+                                <td class="px-6 py-4">
+                                    <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-green-500 h-full w-[95%]"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-semibold">Alex Rivera (Creator)</td>
+                                <td class="px-6 py-4">Basic</td>
+                                <td class="px-6 py-4 font-mono">$450</td>
+                                <td class="px-6 py-4"><span class="status-pill status-at-risk">At Risk</span></td>
+                                <td class="px-6 py-4">
+                                    <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-red-500 h-full w-[40%]"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-semibold">Peak Performance</td>
+                                <td class="px-6 py-4">Pro</td>
+                                <td class="px-6 py-4 font-mono">$800</td>
+                                <td class="px-6 py-4"><span class="status-pill status-active">Active</span></td>
+                                <td class="px-6 py-4">
+                                    <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-green-500 h-full w-[88%]"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Deliverable Queue -->
+            <div>
+                <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-tasks mr-2 text-emerald-500"></i>Monthly Queue
+                </h2>
+                <div class="space-y-4">
+                    <div class="notion-card p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-bold text-gray-800 text-sm">Monthly Audit: Acme</span>
+                            <span class="text-[10px] bg-indigo-50 text-indigo-600 px-2 py-1 rounded">DUE 25TH</span>
+                        </div>
+                        <div class="text-xs text-gray-500 mb-3">Status: In Progress</div>
+                        <div class="flex -space-x-2">
+                            <div class="w-6 h-6 rounded-full bg-gray-200 border-2 border-white"></div>
+                            <div class="w-6 h-6 rounded-full bg-indigo-500 border-2 border-white"></div>
+                        </div>
+                    </div>
+                    <div class="notion-card p-4 border-l-4 border-l-amber-400">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="font-bold text-gray-800 text-sm">Draft Performance Report</span>
+                            <span class="text-[10px] bg-amber-50 text-amber-600 px-2 py-1 rounded">OVERDUE</span>
+                        </div>
+                        <div class="text-xs text-gray-500">Alex Rivera (Creator)</div>
+                    </div>
+                </div>
+                <button class="w-full mt-6 py-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-400 font-bold hover:bg-gray-50 transition">
+                    + Add Task
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

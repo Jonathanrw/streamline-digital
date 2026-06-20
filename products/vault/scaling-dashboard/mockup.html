@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaling Dashboard Mockup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0B0E14;
+            --card-bg: #161B22;
+            --text-main: #FFFFFF;
+            --text-dim: #8B949E;
+            --accent: #58A6FF;
+            --success: #3FB950;
+            --warning: #D29922;
+            --danger: #F85149;
+            --border: #30363D;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .dashboard-container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        header {
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-dim);
+        }
+
+        /* Vital Signs Bar */
+        .vital-signs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .vital-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vital-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .vital-value {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .vital-trend {
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .trend-up { color: var(--success); }
+
+        /* OKRs Section */
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .okr-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .okr-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .okr-status {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .status-on-track { background-color: rgba(63, 185, 80, 0.15); color: var(--success); }
+        .status-at-risk { background-color: rgba(248, 81, 73, 0.15); color: var(--danger); }
+
+        .okr-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .progress-container {
+            width: 100%;
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+        }
+
+        .progress-bar-bg {
+            height: 6px;
+            background-color: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        /* Trends Section */
+        .trends-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .chart-placeholder {
+            height: 200px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background-color: rgba(88, 166, 255, 0.3);
+            border-top: 2px solid var(--accent);
+            border-radius: 2px 2px 0 0;
+            transition: height 0.3s ease;
+        }
+
+        .chart-bar:hover {
+            background-color: rgba(88, 166, 255, 0.6);
+        }
+
+        .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        .nav-sidebar {
+            position: fixed;
+            left: 24px;
+            top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--accent);
+            color: var(--text-main);
+        }
+
+        .nav-btn.active {
+            background-color: rgba(88, 166, 255, 0.1);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-sidebar">
+        <button class="nav-btn active">Dashboard</button>
+        <button class="nav-btn">Metrics Tracker</button>
+        <button class="nav-btn">Quarterly Goals</button>
+        <button class="nav-btn">Strategy Archive</button>
+    </div>
+
+    <div class="dashboard-container">
+        <header>
+            <div class="breadcrumb">The Vault / Strategy Drops</div>
+            <h1>🚀 Scaling Dashboard</h1>
+        </header>
+
+        <!-- Vital Signs -->
+        <div class="vital-signs">
+            <div class="vital-card">
+                <div class="vital-header"><span>💰</span> Revenue</div>
+                <div class="vital-value">$12,450.00</div>
+                <div class="vital-trend trend-up">↑ 14% vs last month</div>
+            </div>
+            <div class="vital-card">
+                <div class="vital-header"><span>📈</span> Profit</div>
+                <div class="vital-value">$8,210.00</div>
+                <div class="vital-trend trend-up">↑ 8% vs last month</div>
+            </div>
+            <div class="vital-card">
+                <div class="vital-header"><span>⏱️</span> Hourly Rate</div>
+                <div class="vital-value">$164.20/hr</div>
+                <div class="vital-trend trend-up">↑ $12.50 vs avg</div>
+            </div>
+            <div class="vital-card">
+                <div class="vital-header"><span>📧</span> Email List</div>
+                <div class="vital-value">2,842</div>
+                <div class="vital-trend trend-up">↑ 124 new subs</div>
+            </div>
+        </div>
+
+        <!-- OKRs -->
+        <div class="section-title"><span>🎯</span> Quarterly Objectives (Q3)</div>
+        <div class="okr-grid">
+            <div class="okr-card">
+                <span class="okr-status status-on-track">ON TRACK</span>
+                <div class="okr-title">Scale 'The Vault' to 500 Active Members</div>
+                <div class="progress-container">
+                    <div class="progress-meta">
+                        <span>Progress</span>
+                        <span>72%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 72%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="okr-card">
+                <span class="okr-status status-at-risk">AT RISK</span>
+                <div class="okr-title">Automate 80% of Client Onboarding</div>
+                <div class="progress-container">
+                    <div class="progress-meta">
+                        <span>Progress</span>
+                        <span>35%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 35%; background-color: var(--danger);"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="okr-card">
+                <span class="okr-status status-on-track">ON TRACK</span>
+                <div class="okr-title">Launch 3 New Premium Templates</div>
+                <div class="progress-container">
+                    <div class="progress-meta">
+                        <span>Progress</span>
+                        <span>66%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 66%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trends -->
+        <div class="section-title"><span>📊</span> Profitability Trends (Last 6 Months)</div>
+        <div class="trends-container">
+            <div class="chart-placeholder">
+                <div class="chart-bar" style="height: 40%;"></div>
+                <div class="chart-bar" style="height: 55%;"></div>
+                <div class="chart-bar" style="height: 50%;"></div>
+                <div class="chart-bar" style="height: 75%;"></div>
+                <div class="chart-bar" style="height: 85%;"></div>
+                <div class="chart-bar" style="height: 100%;"></div>
+            </div>
+            <div class="chart-labels">
+                <span>JAN</span>
+                <span>FEB</span>
+                <span>MAR</span>
+                <span>APR</span>
+                <span>MAY</span>
+                <span>JUN</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Audit & Optimization Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .notion-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; transition: transform 0.2s; }
+        .notion-card:hover { transform: translateY(-2px); }
+        .status-pill { padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+        .status-automate { background: #dcfce7; color: #166534; }
+        .status-remove { background: #fee2e2; color: #991b1b; }
+        .status-centralize { background: #e0f2fe; color: #075985; }
+        .sidebar-item:hover { background-color: #f1f5f9; cursor: pointer; }
+    </style>
+</head>
+<body class="flex">
+
+    <!-- Sidebar -->
+    <div class="w-64 h-screen bg-white border-r border-slate-200 p-4 hidden md:block">
+        <div class="flex items-center space-x-2 mb-8 px-2">
+            <div class="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center text-white">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <span class="font-bold text-slate-800">Streamline OS</span>
+        </div>
+        <nav class="space-y-1">
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-slate-600 font-medium">
+                <i class="fas fa-home w-5"></i><span>Overview</span>
+            </div>
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-indigo-600 bg-indigo-50 font-semibold border-r-4 border-indigo-600">
+                <i class="fas fa-magnifying-glass w-5"></i><span>Workflow Audit</span>
+            </div>
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-slate-600 font-medium">
+                <i class="fas fa-map w-5"></i><span>Scaling Roadmap</span>
+            </div>
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-slate-600 font-medium">
+                <i class="fas fa-microchip w-5"></i><span>Automation Hub</span>
+            </div>
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-slate-600 font-medium">
+                <i class="fas fa-folder-open w-5"></i><span>Client Portal</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 h-screen overflow-y-auto">
+        <!-- Header -->
+        <header class="bg-white border-b border-slate-200 p-6 flex justify-between items-center sticky top-0 z-10">
+            <div>
+                <h1 class="text-2xl font-bold text-slate-900">Workflow Audit & Optimization</h1>
+                <p class="text-slate-500 text-sm">Client: Alexander Thorne | Strategy: Scale to $20k/mo</p>
+            </div>
+            <div class="flex space-x-3">
+                <button class="bg-indigo-600 text-white px-4 py-2 rounded-md font-medium hover:bg-indigo-700 transition">
+                    <i class="fas fa-plus mr-2"></i>New Task Audit
+                </button>
+            </div>
+        </header>
+
+        <main class="p-8 max-w-6xl mx-auto">
+            <!-- ROI Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="notion-card p-6 border-l-4 border-green-500">
+                    <div class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-1">Time Reclaimed</div>
+                    <div class="text-3xl font-bold text-slate-900">42.5 hrs <span class="text-sm font-normal text-slate-400">/mo</span></div>
+                    <div class="mt-2 text-green-600 text-xs font-semibold"><i class="fas fa-arrow-up mr-1"></i> 12% increase this month</div>
+                </div>
+                <div class="notion-card p-6 border-l-4 border-indigo-500">
+                    <div class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-1">Efficiency ROI</div>
+                    <div class="text-3xl font-bold text-slate-900">$6,375 <span class="text-sm font-normal text-slate-400">/mo</span></div>
+                    <div class="mt-2 text-slate-400 text-xs">Based on $150/hr effective rate</div>
+                </div>
+                <div class="notion-card p-6 border-l-4 border-orange-500">
+                    <div class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-1">Automation Score</div>
+                    <div class="flex items-center mt-1">
+                        <div class="text-3xl font-bold text-slate-900 mr-3">68%</div>
+                        <div class="w-full bg-slate-200 rounded-full h-2.5">
+                            <div class="bg-orange-500 h-2.5 rounded-full" style="width: 68%"></div>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-slate-400 text-xs">Target: 85% by Q3</div>
+                </div>
+            </div>
+
+            <!-- ARC Framework Table -->
+            <div class="mb-8">
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-list-check mr-2 text-indigo-600"></i>Active Audit: The ARC Framework
+                </h2>
+                <div class="notion-card overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-50 border-b border-slate-200">
+                            <tr>
+                                <th class="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Task / Process</th>
+                                <th class="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Frequency</th>
+                                <th class="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Manual Burden</th>
+                                <th class="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider">ARC Strategy</th>
+                                <th class="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-4">
+                                    <div class="font-semibold text-slate-800">Lead Qualification</div>
+                                    <div class="text-xs text-slate-400">Reviewing contact form submissions</div>
+                                </td>
+                                <td class="p-4 text-sm text-slate-600">Daily</td>
+                                <td class="p-4 text-sm text-slate-600 font-medium">8.0 hrs/mo</td>
+                                <td class="p-4"><span class="status-pill status-automate">A - Automate</span></td>
+                                <td class="p-4"><span class="text-xs bg-indigo-100 text-indigo-700 font-bold px-2 py-1 rounded">In Progress</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">
+                                    <div class="font-semibold text-slate-800">Social Media Engagement</div>
+                                    <div class="text-xs text-slate-400">Manual replies to cold DMs</div>
+                                </td>
+                                <td class="p-4 text-sm text-slate-600">Daily</td>
+                                <td class="p-4 text-sm text-slate-600 font-medium">12.0 hrs/mo</td>
+                                <td class="p-4"><span class="status-pill status-remove">R - Remove</span></td>
+                                <td class="p-4"><span class="text-xs bg-slate-100 text-slate-500 font-bold px-2 py-1 rounded">Planned</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">
+                                    <div class="font-semibold text-slate-800">Invoicing & Collections</div>
+                                    <div class="text-xs text-slate-400">Manual PDF creation and follow-ups</div>
+                                </td>
+                                <td class="p-4 text-sm text-slate-600">Weekly</td>
+                                <td class="p-4 text-sm text-slate-600 font-medium font-medium">5.5 hrs/mo</td>
+                                <td class="p-4"><span class="status-pill status-automate">A - Automate</span></td>
+                                <td class="p-4"><span class="text-xs bg-green-100 text-green-700 font-bold px-2 py-1 rounded">Complete</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">
+                                    <div class="font-semibold text-slate-800">Admin Deep Dive</div>
+                                    <div class="text-xs text-slate-400">Fragmented project research</div>
+                                </td>
+                                <td class="p-4 text-sm text-slate-600">Per Project</td>
+                                <td class="p-4 text-sm text-slate-600 font-medium">15.0 hrs/mo</td>
+                                <td class="p-4"><span class="status-pill status-centralize">C - Centralize</span></td>
+                                <td class="p-4"><span class="text-xs bg-orange-100 text-orange-700 font-bold px-2 py-1 rounded">Review Needed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Roadmap Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                        <i class="fas fa-map-location-dot mr-2 text-indigo-600"></i>Scaling Roadmap
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="notion-card p-4 border-l-4 border-indigo-600">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-xs font-bold text-indigo-600 uppercase">Phase 1: Foundation</span>
+                                <span class="text-xs text-slate-400 italic">Due June 15</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 mb-1 text-sm">CRM & Lead Capture Migration</h3>
+                            <p class="text-xs text-slate-500 mb-3">Moving from manual spreadsheets to automated Notion CRM with Typeform integration.</p>
+                            <div class="w-full bg-slate-100 rounded-full h-1.5 mb-2">
+                                <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] text-slate-400">6 / 8 tasks complete</span>
+                                <span class="text-[10px] font-bold text-indigo-600">75%</span>
+                            </div>
+                        </div>
+                        <div class="notion-card p-4 border-l-4 border-slate-300">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-xs font-bold text-slate-400 uppercase">Phase 2: Fulfillment</span>
+                                <span class="text-xs text-slate-400 italic">Starts July 1</span>
+                            </div>
+                            <h3 class="font-bold text-slate-800 mb-1 text-sm">Automated Client Portals</h3>
+                            <p class="text-xs text-slate-500">Standardizing service delivery with automated Notion hub generation per client.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Steps / Checklist -->
+                <div>
+                    <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                        <i class="fas fa-check-double mr-2 text-green-600"></i>Audit Action Items
+                    </h2>
+                    <div class="notion-card p-6">
+                        <div class="space-y-4">
+                            <label class="flex items-start space-x-3 cursor-pointer group">
+                                <input type="checkbox" checked class="mt-1 h-4 w-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                <div>
+                                    <div class="text-sm font-medium text-slate-800 group-hover:text-indigo-600 line-through text-slate-400 transition">Complete SaaS Stack Inventory</div>
+                                    <div class="text-xs text-slate-400 italic">Inventory finished with 14 active subscriptions.</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer group">
+                                <input type="checkbox" class="mt-1 h-4 w-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                <div>
+                                    <div class="text-sm font-medium text-slate-800 group-hover:text-indigo-600 transition">Design Zapier Lead Scoring Flow</div>
+                                    <div class="text-xs text-slate-400">P0 - Needs to connect Typeform to Notion CRM.</div>
+                                </div>
+                            </label>
+                            <label class="flex items-start space-x-3 cursor-pointer group">
+                                <input type="checkbox" class="mt-1 h-4 w-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                <div>
+                                    <div class="text-sm font-medium text-slate-800 group-hover:text-indigo-600 transition">Setup Stripe Auto-Recurring Invoices</div>
+                                    <div class="text-xs text-slate-400">P1 - Move existing clients to subscriptions.</div>
+                                </div>
+                            </label>
+                        </div>
+                        <button class="w-full mt-6 py-2 px-4 border border-slate-200 rounded-md text-xs font-bold text-slate-600 hover:bg-slate-50 transition">
+                            <i class="fas fa-plus mr-1"></i>Add Action Item
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

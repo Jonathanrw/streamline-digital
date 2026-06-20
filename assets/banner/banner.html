@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion Template Banner</title>
+    <style>
+        :root {
+            --bg-color: #f7f6f3;
+            --text-color: #37352f;
+            --accent-color: #37352f;
+            --card-bg: #ffffff;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+            width: 1500px;
+        }
+        .banner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f7f6f3 0%, #eceae4 100%);
+        }
+        .logo {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 72px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        p {
+            font-size: 28px;
+            color: #666;
+            margin-top: 10px;
+        }
+        .mockup-preview {
+            display: flex;
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .window {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            width: 300px;
+            height: 200px;
+            padding: 15px;
+            text-align: left;
+        }
+        .window-header {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #eee; }
+        .bar { height: 10px; background: #f1f1f1; border-radius: 5px; margin-bottom: 8px; }
+        .bar.short { width: 40%; }
+        .bar.med { width: 70%; }
+        .bar.long { width: 90%; }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="logo">🚀</div>
+        <h1>Solopreneur Workflow Hub</h1>
+        <p>The all-in-one Notion system for digital creators & freelancers.</p>
+        
+        <div class="mockup-preview">
+            <div class="window">
+                <div class="window-header"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">Project Manager</div>
+                <div class="bar long"></div>
+                <div class="bar med"></div>
+                <div class="bar short"></div>
+            </div>
+            <div class="window" style="transform: translateY(-20px);">
+                <div class="window-header"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">Content Calendar</div>
+                <div style="display: flex; gap: 5px;">
+                    <div style="width: 30%; height: 60px; background: #f9f9f9;"></div>
+                    <div style="width: 30%; height: 60px; background: #f9f9f9;"></div>
+                    <div style="width: 30%; height: 60px; background: #f9f9f9;"></div>
+                </div>
+            </div>
+            <div class="window">
+                <div class="window-header"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                <div style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">Finance Tracker</div>
+                <div class="bar short"></div>
+                <div style="font-size: 24px; font-weight: bold; margin-top: 10px;">$4,250.00</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

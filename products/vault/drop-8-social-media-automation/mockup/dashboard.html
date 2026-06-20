@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Drop #8: Social Media Automation System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .notion-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; transition: transform 0.2s; }
+        .notion-card:hover { transform: translateY(-2px); }
+        .platform-tag { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+        .tag-linkedin { background: #e0e7ff; color: #3730a3; }
+        .tag-x { background: #f1f5f9; color: #0f172a; }
+        .tag-ig { background: #fdf2f8; color: #9d174d; }
+    </style>
+</head>
+<body class="p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="flex justify-between items-center mb-8 pb-6 border-b border-slate-200">
+            <div>
+                <h1 class="text-3xl font-bold text-slate-900">Social Media Automation</h1>
+                <p class="text-slate-500">Vault Drop #8 | Strategy: Multi-Platform Presence</p>
+            </div>
+            <div class="flex space-x-3">
+                <button class="bg-indigo-600 text-white px-4 py-2 rounded-md font-medium hover:bg-indigo-700 transition">
+                    <i class="fas fa-plus mr-2"></i>New Post
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+            <div class="notion-card p-6 border-l-4 border-indigo-500">
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Scheduled Posts</div>
+                <div class="text-3xl font-bold text-slate-900">14</div>
+                <div class="mt-2 text-indigo-600 text-xs font-semibold">Next: LinkedIn @ 10:00 AM</div>
+            </div>
+            <div class="notion-card p-6 border-l-4 border-pink-500">
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Engagement Goal</div>
+                <div class="text-3xl font-bold text-slate-900">85%</div>
+                <div class="w-full bg-slate-100 h-2 rounded-full mt-3">
+                    <div class="bg-pink-500 h-2 rounded-full" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="notion-card p-6 border-l-4 border-emerald-500">
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Repurposed Pieces</div>
+                <div class="text-3xl font-bold text-slate-900">28</div>
+                <div class="mt-2 text-emerald-600 text-xs font-semibold"><i class="fas fa-arrow-up mr-1"></i> +4 this week</div>
+            </div>
+            <div class="notion-card p-6 border-l-4 border-slate-400">
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Active Platforms</div>
+                <div class="text-3xl font-bold text-slate-900">3</div>
+                <div class="mt-2 flex space-x-1">
+                    <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                    <span class="w-2 h-2 rounded-full bg-slate-900"></span>
+                    <span class="w-2 h-2 rounded-full bg-pink-500"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Content Queue -->
+            <div class="lg:col-span-2">
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-calendar-alt mr-2 text-indigo-600"></i>Upcoming Content Queue
+                </h2>
+                <div class="space-y-3">
+                    <div class="notion-card p-4 flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-slate-100 rounded flex items-center justify-center text-slate-400">
+                                <i class="fas fa-image text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-slate-800 text-sm">3 Automation Tools for Solopreneurs</div>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="platform-tag tag-linkedin">LinkedIn</span>
+                                    <span class="text-[10px] text-slate-400 italic">Tomorrow, 9:00 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded font-bold">SCHEDULED</span>
+                    </div>
+                    <div class="notion-card p-4 flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-slate-100 rounded flex items-center justify-center text-slate-400">
+                                <i class="fab fa-twitter text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-slate-800 text-sm">Thread: Why your CRM is failing you</div>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="platform-tag tag-x">X (Twitter)</span>
+                                    <span class="text-[10px] text-slate-400 italic">Friday, 2:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded font-bold">SCHEDULED</span>
+                    </div>
+                    <div class="notion-card p-4 flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-slate-100 rounded flex items-center justify-center text-slate-400">
+                                <i class="fas fa-video text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-slate-800 text-sm">Reel: Behind the scenes of the Vault</div>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="platform-tag tag-ig">Instagram</span>
+                                    <span class="text-[10px] text-slate-400 italic">Saturday, 11:00 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-xs bg-slate-100 text-slate-500 px-2 py-1 rounded font-bold">DRAFT</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repurposing Sidebar -->
+            <div>
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-sync mr-2 text-emerald-600"></i>The Echo Engine
+                </h2>
+                <div class="notion-card p-6">
+                    <div class="text-xs font-bold text-slate-400 uppercase mb-4 tracking-wider">Active Repurposing</div>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-xs mb-2">
+                                <span class="font-bold text-slate-700">Q2 Strategy Newsletter</span>
+                                <span class="text-slate-400">4 / 6 Clips</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full">
+                                <div class="bg-emerald-500 h-1.5 rounded-full" style="width: 66%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-2">
+                                <span class="font-bold text-slate-700">Automation Audit SOP</span>
+                                <span class="text-slate-400">2 / 8 Clips</span>
+                            </div>
+                            <div class="w-full bg-slate-100 h-1.5 rounded-full">
+                                <div class="bg-emerald-500 h-1.5 rounded-full" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full mt-6 py-2 px-4 border border-slate-200 rounded-md text-xs font-bold text-slate-600 hover:bg-slate-50 transition">
+                        Start New Distribution
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Post Templates</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+        .post {
+            width: 1080px;
+            height: 1080px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 80px;
+            box-sizing: border-box;
+        }
+        .accent-bg {
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 40%;
+            height: 40%;
+            background: #f7f6f3;
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .tag {
+            background: #37352f;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: 600;
+            align-self: flex-start;
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 80px;
+            line-height: 1.1;
+            margin: 0;
+            font-weight: 800;
+            color: #37352f;
+        }
+        .highlight {
+            color: #666;
+        }
+        .footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid #f1f1f1;
+            padding-top: 40px;
+        }
+        .brand {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .cta {
+            font-size: 28px;
+            color: #666;
+        }
+        
+        /* Specific Post Styles */
+        .post-2 .feature-list {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .feature-item {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 15px;
+            font-size: 32px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .post-5 .testimonial {
+            font-size: 48px;
+            font-style: italic;
+            margin-top: 60px;
+            line-height: 1.4;
+            color: #444;
+        }
+        .author {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: #eee;
+            border-radius: 50%;
+        }
+        .author-info {
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Template 1: Save Time -->
+    <div class="post post-1">
+        <div class="accent-bg"></div>
+        <div class="content">
+            <div class="tag">EFFICIENCY</div>
+            <h2>Stop wasting <span class="highlight">10+ hours</span> every week on admin.</h2>
+            <p style="font-size: 40px; margin-top: 40px; color: #555;">Get your time back with a system that actually works.</p>
+            <div class="footer">
+                <div class="brand">🚀 Streamline Digital</div>
+                <div class="cta">Get the Hub →</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template 2: Hub Overview -->
+    <div class="post post-2">
+        <div class="content">
+            <div class="tag">THE SYSTEM</div>
+            <h2>Everything you need, in <span class="highlight">one place.</span></h2>
+            <div class="feature-list">
+                <div class="feature-item">📂 Projects</div>
+                <div class="feature-item">📅 Content</div>
+                <div class="feature-item">💰 Finance</div>
+                <div class="feature-item">👥 CRM</div>
+            </div>
+            <div class="footer">
+                <div class="brand">🚀 Streamline Digital</div>
+                <div class="cta">soloworkflow.hub</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template 3: Project Management -->
+    <div class="post post-3" style="background: #37352f; color: white;">
+        <div class="content">
+            <div class="tag" style="background: white; color: #37352f;">PRODUCTIVITY</div>
+            <h2 style="color: white;">Manage projects without the <span style="color: #aaa;">chaos.</span></h2>
+            <p style="font-size: 40px; margin-top: 40px; color: #ccc;">A Notion-based project manager built for speed.</p>
+            <div class="footer" style="border-color: #444;">
+                <div class="brand">🚀 Streamline Digital</div>
+                <div class="cta" style="color: #aaa;">Link in Bio</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template 4: Content Calendar -->
+    <div class="post post-4">
+        <div class="content">
+            <div class="tag">CREATION</div>
+            <h2>Your content calendar, <span class="highlight">supercharged.</span></h2>
+            <div style="margin-top: 60px; flex-grow: 1; background: #f7f6f3; border-radius: 20px; padding: 40px; border: 2px dashed #ddd; display: flex; justify-content: center; align-items: center; font-size: 32px; color: #999;">
+                [Mockup Image of Calendar View]
+            </div>
+            <div class="footer">
+                <div class="brand">🚀 Streamline Digital</div>
+                <div class="cta">Get the Hub →</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template 5: Social Proof -->
+    <div class="post post-5">
+        <div class="content">
+            <div class="tag">RESULTS</div>
+            <div class="testimonial">"This template changed how I run my freelance business. I'm finally organized."</div>
+            <div class="author">
+                <div class="avatar"></div>
+                <div class="author-info">
+                    <strong>Alex Rivers</strong><br>
+                    Independent Designer
+                </div>
+            </div>
+            <div class="footer">
+                <div class="brand">🚀 Streamline Digital</div>
+                <div class="cta">Join 500+ Solopreneurs</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

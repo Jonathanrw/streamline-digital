@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Drop #10: Operations Wiki & SOP Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .notion-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; transition: transform 0.2s; }
+        .notion-card:hover { transform: translateY(-2px); }
+        .wiki-category { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .cat-admin { background: #e0f2fe; color: #075985; }
+        .cat-sales { background: #dcfce7; color: #166534; }
+        .cat-finance { background: #fee2e2; color: #991b1b; }
+        .sidebar-item:hover { background-color: #f1f5f9; cursor: pointer; }
+    </style>
+</head>
+<body class="flex">
+
+    <!-- Sidebar -->
+    <div class="w-64 h-screen bg-white border-r border-slate-200 p-4 hidden md:block">
+        <div class="flex items-center space-x-2 mb-8 px-2">
+            <div class="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center text-white">
+                <i class="fas fa-brain"></i>
+            </div>
+            <span class="font-bold text-slate-800 text-sm">Streamline Wiki</span>
+        </div>
+        <nav class="space-y-1">
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-slate-600 font-medium text-sm">
+                <i class="fas fa-search w-5"></i><span>Search Wiki</span>
+            </div>
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-indigo-600 bg-indigo-50 font-semibold border-r-4 border-indigo-600 text-sm">
+                <i class="fas fa-book-open w-5"></i><span>Internal Wiki</span>
+            </div>
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-slate-600 font-medium text-sm">
+                <i class="fas fa-list-check w-5"></i><span>SOP Library</span>
+            </div>
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-slate-600 font-medium text-sm">
+                <i class="fas fa-user-plus w-5"></i><span>Onboarding</span>
+            </div>
+            <div class="sidebar-item p-2 rounded flex items-center space-x-3 text-slate-600 font-medium text-sm">
+                <i class="fas fa-server w-5"></i><span>Tech Stack</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 h-screen overflow-y-auto">
+        <!-- Header -->
+        <header class="bg-white border-b border-slate-200 p-6 flex justify-between items-center sticky top-0 z-10">
+            <div>
+                <h1 class="text-2xl font-bold text-slate-900">Operations Wiki & SOP Hub</h1>
+                <p class="text-slate-50 text-sm bg-slate-800 inline-block px-2 py-0.5 rounded mt-1">Vault Drop #10</p>
+            </div>
+            <div class="flex space-x-3">
+                <button class="bg-indigo-600 text-white px-4 py-2 rounded-md font-medium text-sm hover:bg-indigo-700 transition">
+                    <i class="fas fa-plus mr-2"></i>Create New SOP
+                </button>
+            </div>
+        </header>
+
+        <main class="p-8 max-w-6xl mx-auto">
+            <!-- Quick Links -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+                <div class="notion-card p-6 text-center group cursor-pointer">
+                    <i class="fas fa-graduation-cap text-indigo-500 text-2xl mb-3 group-hover:scale-110 transition"></i>
+                    <div class="font-bold text-slate-800 text-sm">New Hire Start Here</div>
+                </div>
+                <div class="notion-card p-6 text-center group cursor-pointer">
+                    <i class="fas fa-bullhorn text-emerald-500 text-2xl mb-3 group-hover:scale-110 transition"></i>
+                    <div class="font-bold text-slate-800 text-sm">Marketing Policies</div>
+                </div>
+                <div class="notion-card p-6 text-center group cursor-pointer">
+                    <i class="fas fa-file-invoice-dollar text-red-500 text-2xl mb-3 group-hover:scale-110 transition"></i>
+                    <div class="font-bold text-slate-800 text-sm">Billing Workflows</div>
+                </div>
+                <div class="notion-card p-6 text-center group cursor-pointer">
+                    <i class="fas fa-shield-halved text-amber-500 text-2xl mb-3 group-hover:scale-110 transition"></i>
+                    <div class="font-bold text-slate-800 text-sm">Security & Logins</div>
+                </div>
+            </div>
+
+            <!-- Databases Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Recent Wiki Articles -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                        <i class="fas fa-history mr-2 text-indigo-600"></i>Recently Updated Wiki
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="notion-card p-4 flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-slate-100 rounded flex items-center justify-center text-slate-400">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-slate-800 text-sm">Standard Tone of Voice Guide</div>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <span class="wiki-category cat-admin">Admin</span>
+                                        <span class="text-[10px] text-slate-400">Updated 2 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-slate-400 text-xs"><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                        <div class="notion-card p-4 flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-slate-100 rounded flex items-center justify-center text-slate-400">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-slate-800 text-sm">Lead Scoring Methodology</div>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <span class="wiki-category cat-sales">Sales</span>
+                                        <span class="text-[10px] text-slate-400">Updated 5 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-slate-400 text-xs"><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                        <div class="notion-card p-4 flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-slate-100 rounded flex items-center justify-center text-slate-400">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-slate-800 text-sm">Refund & Dispute Policy</div>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <span class="wiki-category cat-finance">Finance</span>
+                                        <span class="text-[10px] text-slate-400">Updated 1 week ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-slate-400 text-xs"><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Onboarding -->
+                <div>
+                    <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                        <i class="fas fa-running mr-2 text-indigo-600"></i>Active Onboarding
+                    </h2>
+                    <div class="notion-card p-6">
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between text-xs mb-2">
+                                    <span class="font-bold text-slate-700">Sarah (VA)</span>
+                                    <span class="text-indigo-600 font-bold">85%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-1.5 rounded-full">
+                                    <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-2">
+                                    <span class="font-bold text-slate-700">Mark (Content)</span>
+                                    <span class="text-indigo-600 font-bold">40%</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-1.5 rounded-full">
+                                    <div class="bg-indigo-600 h-1.5 rounded-full" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-full mt-6 py-2 px-4 border border-slate-200 rounded-md text-xs font-bold text-slate-600 hover:bg-slate-50 transition">
+                            View All Team
+                        </button>
+                    </div>
+
+                    <!-- Tech Stack Summary -->
+                    <div class="notion-card p-6 mt-6 bg-slate-900 text-white">
+                        <div class="text-[10px] font-bold text-slate-400 uppercase mb-2">Annual SaaS Spend</div>
+                        <div class="text-2xl font-black">$4,280<span class="text-xs font-normal text-slate-500">/yr</span></div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-[10px]">
+                                <span>Active Licenses</span>
+                                <span class="font-bold">14</span>
+                            </div>
+                            <div class="flex justify-between text-[10px]">
+                                <span>Next Renewal</span>
+                                <span class="text-amber-400">June 24 (Stripe)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Manager Showcase</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 40px;
+            color: #37352f;
+        }
+        .notion-mockup {
+            max-width: 1000px;
+            border: 1px solid #e9e9e7;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .header {
+            padding: 20px 40px;
+            border-bottom: 1px solid #f1f1f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icon { font-size: 32px; }
+        h1 { font-size: 32px; margin: 0; }
+        .content { padding: 40px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th {
+            text-align: left;
+            font-size: 12px;
+            color: #999;
+            font-weight: normal;
+            border-bottom: 1px solid #eee;
+            padding: 8px;
+        }
+        td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #f1f1f0;
+            font-size: 14px;
+        }
+        .status {
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .status-active { background: #e7f3ef; color: #0d7d55; }
+        .status-hold { background: #fdecc8; color: #cb912f; }
+        .status-done { background: #f1f1f0; color: #999; }
+        .progress-bg {
+            width: 100px;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #37352f;
+        }
+    </style>
+</head>
+<body>
+    <div class="notion-mockup showcase-1">
+        <div class="header">
+            <span class="icon">📂</span>
+            <h1>Project Manager</h1>
+        </div>
+        <div class="content">
+            <div style="color: #666; font-size: 14px; margin-bottom: 20px;">Active Projects (Sorted by Deadline)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>PROJECT NAME</th>
+                        <th>STATUS</th>
+                        <th>DEADLINE</th>
+                        <th>CLIENT</th>
+                        <th>PROGRESS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Website Redesign - Acme Corp</strong></td>
+                        <td><span class="status status-active">Active</span></td>
+                        <td>Jun 15, 2026</td>
+                        <td>Acme Corp</td>
+                        <td><div class="progress-bg"><div class="progress-fill" style="width: 75%;"></div></div></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Brand Identity Kit</strong></td>
+                        <td><span class="status status-active">Active</span></td>
+                        <td>Jun 22, 2026</td>
+                        <td>Solaris Tech</td>
+                        <td><div class="progress-bg"><div class="progress-fill" style="width: 30%;"></div></div></td>
+                    </tr>
+                    <tr>
+                        <td><strong>E-commerce Strategy</strong></td>
+                        <td><span class="status status-hold">On Hold</span></td>
+                        <td>Jul 05, 2026</td>
+                        <td>Bloom Flora</td>
+                        <td><div class="progress-bg"><div class="progress-fill" style="width: 10%;"></div></div></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social Media Audit</strong></td>
+                        <td><span class="status status-done">Done</span></td>
+                        <td>May 28, 2026</td>
+                        <td>Global Ventures</td>
+                        <td><div class="progress-bg"><div class="progress-fill" style="width: 100%;"></div></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

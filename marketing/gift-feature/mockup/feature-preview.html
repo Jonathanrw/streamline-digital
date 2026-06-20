@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamline Digital | Gift a Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .gift-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); }
+    </style>
+</head>
+<body class="py-12 px-4">
+
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4">Gift a System to a Friend</h1>
+            <p class="text-lg text-slate-600">Help another solopreneur reclaim 10+ hours a week.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Checkout Form -->
+            <div class="space-y-8">
+                <section>
+                    <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                        <i class="fas fa-shopping-cart mr-2 text-indigo-600"></i>1. Select Template
+                    </h2>
+                    <select class="w-full p-3 bg-white border border-slate-300 rounded-lg text-slate-700 font-medium focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                        <option>Solopreneur Workflow Hub ($49)</option>
+                        <option selected>Agency Operating System ($99)</option>
+                        <option>Content Engine Pro ($29)</option>
+                    </select>
+                </section>
+
+                <section>
+                    <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                        <i class="fas fa-envelope mr-2 text-indigo-600"></i>2. Recipient Details
+                    </h2>
+                    <div class="space-y-4">
+                        <input type="text" placeholder="Friend's Name" class="w-full p-3 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500">
+                        <input type="email" placeholder="Friend's Email Address" class="w-full p-3 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500">
+                        <textarea placeholder="Personal Message (e.g. Happy Birthday! Enjoy your new automation system.)" class="w-full p-3 border border-slate-300 rounded-lg h-32 outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                    </div>
+                </section>
+
+                <button class="w-full gradient-bg text-white font-bold py-4 rounded-xl text-lg shadow-lg hover:opacity-90 transition transform hover:-translate-y-0.5">
+                    Purchase Gift Access
+                </button>
+            </div>
+
+            <!-- Preview Card -->
+            <div>
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fas fa-eye mr-2 text-indigo-600"></i>Preview Email Card
+                </h2>
+                <div class="gift-card">
+                    <div class="gradient-bg p-8 text-white text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30">
+                            <i class="fas fa-gift text-2xl"></i>
+                        </div>
+                        <div class="text-xs font-bold uppercase tracking-widest mb-1 opacity-80">A Gift for You</div>
+                        <h3 class="text-2xl font-black">Agency Operating System</h3>
+                    </div>
+                    <div class="p-8">
+                        <p class="text-slate-600 text-sm italic mb-6">"Happy scaling! I know how much you've been wanting to streamline your client onboarding. Hope this helps!"</p>
+                        <div class="flex items-center space-x-3 mb-8">
+                            <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-400">
+                                <i class="fas fa-user text-xs"></i>
+                            </div>
+                            <div class="text-xs">
+                                <div class="font-bold text-slate-800">From Alex</div>
+                                <div class="text-slate-500">alex@example.com</div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 p-4 rounded-lg text-center">
+                            <div class="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">Redemption Code</div>
+                            <div class="text-xl font-mono font-black text-indigo-600 tracking-tighter uppercase">STREAM-XJ49-992B</div>
+                        </div>
+                        <button class="w-full mt-6 bg-slate-900 text-white font-bold py-3 rounded-lg text-sm">
+                            Claim My Template
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

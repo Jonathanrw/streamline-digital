@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Engine Pro Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --sidebar-bg: #F7F7F5;
+            --card-bg: #FFFFFF;
+            --text-main: #37352F;
+            --text-dim: #73726E;
+            --accent: #2383E2;
+            --success: #008060;
+            --warning: #DFAB01;
+            --border: #EDECE9;
+            --hover: #EFEFEF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 12px;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 24px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 2px;
+            font-size: 14px;
+        }
+
+        .nav-item:hover {
+            background-color: var(--hover);
+        }
+
+        .nav-item.active {
+            background-color: var(--hover);
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            padding: 40px 60px;
+            overflow-y: auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .page-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card {
+            margin-bottom: 32px;
+        }
+
+        /* Kanban View Mockup */
+        .kanban {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+
+        .kanban-col {
+            min-width: 200px;
+            flex: 1;
+        }
+
+        .col-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .count {
+            background: var(--border);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+        }
+
+        .notion-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            cursor: pointer;
+        }
+
+        .notion-card:hover {
+            background: var(--sidebar-bg);
+        }
+
+        .notion-card h4 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .tag-blue { background: #E1F0FF; color: #0B6BCB; }
+        .tag-orange { background: #FFEBD3; color: #B35900; }
+        .tag-green { background: #E6F4EA; color: #137333; }
+
+        /* Calendar List */
+        .calendar-list {
+            list-style: none;
+        }
+
+        .cal-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cal-date {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-dim);
+            width: 50px;
+        }
+
+        .cal-content {
+            font-size: 13px;
+        }
+
+        .theme-tag {
+            font-size: 10px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            background: linear-gradient(135deg, #F0F7FF 0%, #FFFFFF 100%);
+            border: 1px solid #C2E0FF;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .cta-box h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #0052CC;
+        }
+
+        .cta-box p {
+            font-size: 13px;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+        }
+
+        .btn-sm {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">🚀 Content Engine Pro</div>
+        <nav>
+            <a href="#" class="nav-item active">🏠 Dashboard</a>
+            <a href="#" class="nav-item">💡 Idea Bank</a>
+            <a href="#" class="nav-item">⚙️ Batching Engine</a>
+            <a href="#" class="nav-item">📅 365 Calendar</a>
+            <a href="#" class="nav-item">📊 Platform Master</a>
+        </nav>
+    </div>
+
+    <div class="main">
+        <header>
+            <div class="page-icon">🚀</div>
+            <h1>Content Engine Pro</h1>
+            <p style="color: var(--text-dim)">Write once. Distribute everywhere.</p>
+        </header>
+
+        <div class="dashboard-grid">
+            <div class="left-col">
+                <div class="card">
+                    <div class="section-header">⚙️ Batching Engine</div>
+                    <div class="kanban">
+                        <div class="kanban-col">
+                            <div class="col-title">Drafting <span class="count">3</span></div>
+                            <div class="notion-card">
+                                <h4>3 Ways to Scale as a Solo</h4>
+                                <span class="tag tag-blue">LinkedIn</span>
+                            </div>
+                            <div class="notion-card">
+                                <h4>My Morning Routine (Real)</h4>
+                                <span class="tag tag-orange">X / Threads</span>
+                            </div>
+                        </div>
+                        <div class="kanban-col">
+                            <div class="col-title">Formatting <span class="count">1</span></div>
+                            <div class="notion-card">
+                                <h4>Why Most Freelancers Fail</h4>
+                                <span class="tag tag-blue">LinkedIn</span>
+                                <span class="tag tag-orange">X</span>
+                            </div>
+                        </div>
+                        <div class="kanban-col">
+                            <div class="col-title">Ready <span class="count">2</span></div>
+                            <div class="notion-card">
+                                <h4>How I Use AI for Sales</h4>
+                                <span class="tag tag-green">Scheduled</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="section-header">💡 Recent Ideas</div>
+                    <div class="kanban">
+                        <div class="notion-card" style="width: 100%;">
+                            <h4>Idea: The "No-Code" Stack for 2026</h4>
+                            <span class="tag">Educational</span>
+                        </div>
+                        <div class="notion-card" style="width: 100%;">
+                            <h4>Idea: Why I stopped using Slack</h4>
+                            <span class="tag">Opinion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="card">
+                    <div class="section-header">📅 Upcoming</div>
+                    <ul class="calendar-list">
+                        <li class="cal-item">
+                            <div class="cal-date">Oct 12</div>
+                            <div class="cal-content">
+                                <div>Motivation Monday</div>
+                                <div class="theme-tag">Theme: Personal Story</div>
+                            </div>
+                        </li>
+                        <li class="cal-item">
+                            <div class="cal-date">Oct 13</div>
+                            <div class="cal-content">
+                                <div>Tutorial Tuesday</div>
+                                <div class="theme-tag">Theme: How-to Guide</div>
+                            </div>
+                        </li>
+                        <li class="cal-item">
+                            <div class="cal-date" style="color: var(--accent);">Oct 14</div>
+                            <div class="cal-content">
+                                <div style="font-weight: 500;">Batching Day</div>
+                                <div class="theme-tag">Status: 0/5 Drafted</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="cta-box">
+                    <h3>Unlock Automation</h3>
+                    <p>Want your Content Engine to post itself? Upgrade to **The Vault** to unlock automated Social Echo.</p>
+                    <button class="btn-sm">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

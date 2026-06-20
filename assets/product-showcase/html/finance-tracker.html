@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker Showcase</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 40px;
+            color: #37352f;
+        }
+        .notion-mockup {
+            max-width: 1000px;
+            border: 1px solid #e9e9e7;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .header {
+            padding: 20px 40px;
+            border-bottom: 1px solid #f1f1f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icon { font-size: 32px; }
+        h1 { font-size: 32px; margin: 0; }
+        .content { padding: 40px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
+        .stat-card { background: #fbfbfa; padding: 20px; border-radius: 8px; border: 1px solid #eee; }
+        .stat-label { font-size: 12px; color: #666; margin-bottom: 5px; }
+        .stat-value { font-size: 24px; font-weight: 700; }
+        .income { color: #0d7d55; }
+        .expense { color: #d44c47; }
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; font-size: 12px; color: #999; border-bottom: 1px solid #eee; padding: 8px; }
+        td { padding: 12px 8px; border-bottom: 1px solid #f1f1f0; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="notion-mockup showcase-3">
+        <div class="header">
+            <span class="icon">💰</span>
+            <h1>Finance Tracker</h1>
+        </div>
+        <div class="content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">TOTAL INCOME (JUNE)</div>
+                    <div class="stat-value income">$5,840.00</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">TOTAL EXPENSES (JUNE)</div>
+                    <div class="stat-value expense">$1,120.00</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">ESTIMATED PROFIT</div>
+                    <div class="stat-value" style="color: #37352f;">$4,720.00</div>
+                </div>
+            </div>
+            
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 15px;">Recent Transactions</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>CATEGORY</th>
+                        <th>DATE</th>
+                        <th>AMOUNT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Client Invoice #001</strong></td>
+                        <td>Services</td>
+                        <td>Jun 02, 2026</td>
+                        <td class="income">+$2,500.00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Notion Subscription</strong></td>
+                        <td>Software</td>
+                        <td>Jun 01, 2026</td>
+                        <td class="expense">-$10.00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vault Strategy Drop #1</strong></td>
+                        <td>Digital Products</td>
+                        <td>Jun 04, 2026</td>
+                        <td class="income">+$49.00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Web Hosting</strong></td>
+                        <td>Software</td>
+                        <td>Jun 03, 2026</td>
+                        <td class="expense">-$35.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
