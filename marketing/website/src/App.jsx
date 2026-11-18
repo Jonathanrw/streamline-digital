@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import heroHubImage from './assets/product-workflow-hub.png';
 import agencyOSImage from './assets/agency-os.png';
 import contentEngineImage from './assets/content-engine-pro.png';
@@ -16,6 +16,8 @@ import drop20 from './assets/drop-20-ai-workflow-optimization.png';
 import VaultPortal from './VaultPortal';
 import AuditSalesPage from './AuditSalesPage';
 import Blog from './Blog';
+import PartnerPage from './PartnerPage';
+import { trackPageView, trackClick, trackSignup } from './analytics';
 
 function App() {
   const [email, setEmail] = useState('');
@@ -29,22 +31,73 @@ function App() {
   // Audit Sales Page state
   const [isAuditPage, setIsAuditPage] = useState(window.location.search.includes('audit=true'));
 
-  // Blog state
-  const [isBlog, setIsBlog] = useState(window.location.search.includes('blog=true'));
+  // Blog state — real URLs: /blog and /blog/<slug> (legacy /?blog=true still works)
+  const [isBlog, setIsBlog] = useState(
+    window.location.pathname === '/blog' ||
+    window.location.pathname.startsWith('/blog/') ||
+    window.location.search.includes('blog=true')
+  );
+
+  // Page view tracking
+  useEffect(() => {
+    trackPageView();
+  }, []);
+
+  // Partner Page state
+  const [isPartnerPage, setIsPartnerPage] = useState(window.location.search.includes('partner=true'));
+
+  // Stripe Checkout state
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const handleCheckout = async (productId, productName) => {
+    if (isCheckingOut) return;
+    trackClick('cta-' + productName.toLowerCase().replace(/[^a-z0-9]/g, '-'));
+    setIsCheckingOut(true);
+    try {
+      const res = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || 'Checkout failed. Please try again.');
+        setIsCheckingOut(false);
+      }
+    } catch (e) {
+      console.error('Checkout error:', e);
+      alert('Unable to connect to checkout. Please try again.');
+      setIsCheckingOut(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email) {
-      setIsSubmitting(true);
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setIsSubmitting(false);
+    if (!email) return;
+    setIsSubmitting(true);
+    trackSignup('lead-magnet');
+    try {
+      const res = await fetch('/api/lead-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      if (!res.ok) throw new Error('Server error');
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Lead capture failed:', err);
+      // Still show success so user gets the checklist
       setSubmitted(true);
     }
+    setIsSubmitting(false);
   };
 
   if (isVaultPortal) return <VaultPortal setIsVaultPortal={setIsVaultPortal} />;
   if (isAuditPage) return <AuditSalesPage setIsAuditPage={setIsAuditPage} />;
   if (isBlog) return <Blog setActivePage={setIsBlog} />;
+  if (isPartnerPage) return <PartnerPage setIsPartnerPage={setIsPartnerPage} />;
 
   return (
     <div className="min-h-screen w-full bg-[#0a0c10] text-gray-100 font-sans selection:bg-blue-500/30">
@@ -58,9 +111,11 @@ function App() {
           <a href="#workflow-hub" className="hover:text-white transition">Workflow Hub</a>
           <a href="#vault" className="hover:text-white transition">The Vault</a>
           <a href="#audit" className="hover:text-white transition">Audit</a>
-          <button onClick={() => { window.location.href = '/?blog=true'; }} className="hover:text-white transition">Blog</button>
+          <button onClick={() => setIsPartnerPage(true)} className="hover:text-white transition">Partners</button>
+          <button onClick={() => { window.location.href = '/blog'; }} className="hover:text-white transition">Blog</button>
           <button onClick={() => setIsVaultPortal(true)} className="hover:text-white transition">Member Portal</button>
-          <a href="https://buy.stripe.com/cNi4gB9do3aqfM19gD5AQ00" className="bg-blue-600 text-white px-5 py-2.5 rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-600/20 font-bold">Get Started</a>
+          {/* Stripe: /api/create-checkout-session → workflow-hub */}
+          <button onClick={() => handleCheckout('workflow-hub', 'Workflow Hub')} disabled={isCheckingOut} className="bg-blue-600 text-white px-5 py-2.5 rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-600/20 font-bold disabled:opacity-60">{isCheckingOut ? 'Redirecting...' : 'Get Started'}</button>
         </div>
       </nav>
 
@@ -137,9 +192,10 @@ function App() {
               ))}
             </div>
             <div className="pt-4">
-              <a href="https://buy.stripe.com/cNi4gB9do3aqfM19gD5AQ00" className="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-blue-500 transition shadow-xl shadow-blue-600/20">
-                Get Workflow Hub – $49
-              </a>
+              {/* Stripe: /api/create-checkout-session → workflow-hub */}
+              <button onClick={() => handleCheckout('workflow-hub', 'Workflow Hub')} disabled={isCheckingOut} className="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-blue-500 transition shadow-xl shadow-blue-600/20 disabled:opacity-60">
+                {isCheckingOut ? 'Redirecting to Checkout...' : 'Get Workflow Hub – $49'}
+              </button>
             </div>
           </div>
           <div className="flex-1 relative">
@@ -178,9 +234,10 @@ function App() {
               ))}
             </ul>
             <div className="pt-4">
-              <a href="https://buy.stripe.com/dRm7sNfBMbGW6br2Sf5AQ03" className="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-blue-500 transition shadow-xl shadow-blue-600/20">
-                Get Content Engine Pro – $29
-              </a>
+              {/* Stripe: /api/create-checkout-session → content-engine-pro */}
+              <button onClick={() => handleCheckout('content-engine-pro', 'Content Engine Pro')} disabled={isCheckingOut} className="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-blue-500 transition shadow-xl shadow-blue-600/20 disabled:opacity-60">
+                {isCheckingOut ? 'Redirecting to Checkout...' : 'Get Content Engine Pro – $29'}
+              </button>
             </div>
           </div>
           <div className="flex-1 relative">
@@ -203,6 +260,11 @@ function App() {
             <p className="text-xl text-gray-400">
               Unlimited access to every template we've ever built, plus <span className="text-white font-bold italic">monthly Strategy Drops</span> that keep your business ahead of the curve.
             </p>
+            <div className="pt-2">
+              <span className="text-indigo-400 text-xs font-bold bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
+                New: Partners earn 30% recurring commission
+              </span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -226,8 +288,9 @@ function App() {
 
           <div className="flex flex-col items-center gap-8 pt-8 text-center">
             <div className="flex gap-4">
-              <a href="https://buy.stripe.com/7sY7sN89k6mCbvLeAX5AQ02" className="bg-indigo-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-indigo-500 transition shadow-xl shadow-indigo-600/20">
-                Join The Vault – $19/mo
+              {/* Stripe: /api/create-checkout-session → the-vault (subscription) */}
+              <a onClick={() => handleCheckout('the-vault', 'The Vault')} className={`bg-indigo-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-indigo-500 transition shadow-xl shadow-indigo-600/20 cursor-pointer ${isCheckingOut ? 'opacity-60 pointer-events-none' : ''}`}>
+                {isCheckingOut ? 'Redirecting to Checkout...' : 'Join The Vault – $19/mo'}
               </a>
               <button onClick={() => setIsVaultPortal(true)} className="bg-white/5 border border-white/10 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/10 transition backdrop-blur-md">
                 Member Login
@@ -248,8 +311,9 @@ function App() {
               Stop guessing. Let us audit your operational chaos and deliver a custom **ARC Strategy** to reclaim 10+ hours of your week.
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
-              <a href="https://buy.stripe.com/bJebJ3cpA5iyczP78v5AQ01" className="bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-blue-700 transition shadow-xl shadow-blue-600/40 text-center">
-                Secure Your Audit – $499
+              {/* Stripe: /api/create-checkout-session → workflow-audit */}
+              <a onClick={() => handleCheckout('workflow-audit', 'Workflow Audit')} className={`bg-blue-600 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-blue-700 transition shadow-xl shadow-blue-600/40 text-center cursor-pointer ${isCheckingOut ? 'opacity-60 pointer-events-none' : ''}`}>
+                {isCheckingOut ? 'Redirecting to Checkout...' : 'Secure Your Audit – $499'}
               </a>
               <button onClick={() => setIsAuditPage(true)} className="bg-gray-100 text-gray-600 px-10 py-5 rounded-2xl text-lg font-bold hover:bg-gray-200 transition text-center">
                 Learn More
@@ -292,7 +356,7 @@ function App() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <button type="submit" disabled={isSubmitting} className="bg-white text-blue-600 px-8 py-5 rounded-2xl font-black hover:bg-blue-50 transition shadow-lg disabled:opacity-50">
-                  {isSubmitting ? 'Sending...' : 'Get Instant Access'}
+                  {isSubmitting ? 'Sending...' : 'Get the v2 Checklist'}
                 </button>
               </form>
             ) : (
@@ -328,7 +392,7 @@ function App() {
           <div className="space-y-4 text-sm">
             <h5 className="font-bold text-white">Members</h5>
             <button onClick={() => setIsVaultPortal(true)} className="block text-gray-500 hover:text-white transition text-left">Login</button>
-            <a href="https://streamline.lemonsqueezy.com/affiliates" className="block text-gray-500 hover:text-white transition">Partners</a>
+            <button onClick={() => setIsPartnerPage(true)} className="block text-gray-500 hover:text-white transition text-left">Become a Partner (30% Commission)</button>
             <a href="#" className="block text-gray-500 hover:text-white transition">Support</a>
           </div>
         </div>
